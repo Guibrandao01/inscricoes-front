@@ -14,7 +14,7 @@ export class CrudComponent implements OnInit {
 
   formulario: FormGroup;
 
-  array: campos[] = [];
+  inscricoes: campos[] = [];
 
 
   constructor(
@@ -48,30 +48,30 @@ export class CrudComponent implements OnInit {
     };
 
     if (this.formulario.valid) {
-      this.array.push(this.campo)
+      this.inscricoes.push(this.campo)
     }
 
 
   }
   
   onSubmit() {
-    for (var i = 0; i < this.array.length; i++) {
-      var item = this.array[i];
+    for (var i = 0; i < this.inscricoes.length; i++) {
+      var item = this.inscricoes[i];
       this.crudService.postInscricoes(item).subscribe(data => {
         this.toastr.success('Dados salvos com sucesso')
 
       })
 
     }
-    this.array = [];
+    this.inscricoes = [];
 
   }
 
   remover(item: any) {
 
-    for (var g = 0; g < this.array.length; g++) {
-      if (item == this.array[g]) {
-        this.array.splice(g, 1)
+    for (var g = 0; g < this.inscricoes.length; g++) {
+      if (item == this.inscricoes[g]) {
+        this.inscricoes.splice(g, 1)
       }
     }
   }
