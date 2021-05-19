@@ -66,18 +66,15 @@
             </tr>
         </thead>
         <tbody>
-            
                 <tr *ngFor="let item of inscricoes; let i = index">
                     <td>{{item.Ano}}</td>
                     <td>{{item.Acordo_AutoInfracao}}</td>
                     <td>{{item.Processo}}</td>
                     <td>{{item.Apartirde}}</td>
                     <button class='btn btn-outline-danger mb-1 btn-sm' (click)=remover(item)>Remover</button>
-                    
+
                 </tr>
                 
-                
-
         </tbody>
     </table>
 
