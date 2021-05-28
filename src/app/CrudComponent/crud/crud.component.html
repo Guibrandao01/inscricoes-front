@@ -1,83 +1,76 @@
-<form class="needs-validation" novalidate [formGroup]="formulario">
+<div class = "topo">
+<h1>Inscrições de Débitos Automatizada</h1>
+<hr/>
+</div>
 
+<form class="needs-validation" novalidate [formGroup]="formulario" style="margin-left: 1em;">
     <div class="form-row">
-
         <div class="col-md-mb3 ">
             <label for="nome">Ano</label>
-
-            <input type="text" class="form-control" id="Ano" placeholder="Insira o ano" formControlName="Ano" />
+            <input type="text" class="form-control" id="Ano" placeholder="Insira o ano" formControlName="Ano" mask="0000" />
         </div>
+
+        <div></div>
 
         <div class="col-md-mb-3  ">
             <label for="nome">Acordo</label>
-
             <input type="text" class="form-control" id="Acordo_AutoInfracao" placeholder="Insira o acordo"
                 formControlName="Acordo_AutoInfracao" />
+
+
         </div>
 
 
         <div class="col-md-mb-2  ">
             <label for="nome">Processo</label>
-
             <input type="text" class="form-control" id="Processo" placeholder="Insira o processo"
                 formControlName="Processo" />
-
-        </div>
-
-        <br><br>
-
-        <div class="form-row  ">
-            <label>
-                <input type="radio" class="" value="Acordo" formControlName="Apartirde" />
-                <span>Acordo</span>
-            </label>
-
-            <label>
-                <input type="radio" class=" " value="AutoInfraco" formControlName="Apartirde" />
-                <span>AutoInfracao</span>
-            </label>
         </div>
     </div>
+    <br>
+    <label style="display: block;">
+        <input type="radio" class="" value="Acordo" formControlName="Apartirde" />
+        <span>Acordo</span>
+    </label>
+    <label style="display: block;">
+        <input type="radio" class=" " value="AutoInfraco" formControlName="Apartirde" />
+        <span>AutoInfracao</span>
 
-
-
-
-
-
-
-    <BR><BR><BR>
-
+    </label>
+    <br>
+    <button class="btnInserir " type="reset" class="btn btn-primary" (click)="inserirTabela()">Inserir abaixo</button>
 </form>
 
-<form [formGroup]="formulario">
-    <button class="btnInserir " type="reset" class="btn btn-primary" (click)="inserirTabela()" [disabled]="!formulario.valid">Inserir </button>
+<div style="margin-top: 3em;">
+    <form [formGroup]="formulario">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Ano</th>
-                <th scope="col">Acordo</th>
-                <th scope="col">Processo</th>
-                <th scope="col">Apartide</th>
-                <th scope="col"></th>
-
-            </tr>
-        </thead>
-        <tbody>
-                <tr *ngFor="let item of inscricoes; let i = index">
-                    <td>{{item.Ano}}</td>
-                    <td>{{item.Acordo_AutoInfracao}}</td>
-                    <td>{{item.Processo}}</td>
-                    <td>{{item.Apartirde}}</td>
-                    <button class='btn btn-outline-danger mb-1 btn-sm' (click)=remover(item)>Remover</button>
-
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Ano</th>
+                    <th scope="col">Acordo</th>
+                    <th scope="col">Processo</th>
+                    <th scope="col">A partir de:</th>
+                    <th scope="col"></th>
                 </tr>
-                
-        </tbody>
-    </table>
+            </thead>
+            
+                <tbody>
+                    <tr *ngFor="let item of inscricoes; let i = index">
+                        <td>{{item.Ano}}</td>
+                        <td>{{item.Acordo_AutoInfracao}}</td>
+                        <td>{{item.Processo}}</td>
+                        <td>{{item.Apartirde}}</td>
+                        <button class='btn btn-outline-danger mb-1 btn-sm' (click)=remover(item)>Remover</button>
+                    </tr>
+                </tbody>
+          
 
-</form>
+        </table>
 
-<div>
-    <button type="submit" class="btn btn-primary " (click)="onSubmit()">Inscrever</button>
+        <div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()" >Enviar para
+                processamento</button>
+        </div>
+    </form>
 </div>

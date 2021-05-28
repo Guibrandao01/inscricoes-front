@@ -1,3 +1,18 @@
 .btnInserir{
 margin-bottom: 100px;
 }
+
+.feedback{
+font-size:10px;
+margin-left: 1em;
+}
+
+.table{
+    margin-right: 10em;   
+}
+
+.topo{
+    color: darkgray;
+    padding-left: 1em;
+    
+}

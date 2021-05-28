@@ -10,7 +10,7 @@ var httpOptions = {headers: new HttpHeaders({"Content-Type": "application/json"}
 })
 export class CrudService {
   
-  url = 'http://debitos.pmc.intra:8080';
+  url = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
   inscricao:Inscricao[];

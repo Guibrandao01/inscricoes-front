@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { campos } from '../../model/campos';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-crud',
   templateUrl: './crud.component.html',
@@ -14,6 +15,11 @@ export class CrudComponent implements OnInit {
 
   formulario: FormGroup;
 
+  usuario: any = {
+    Ano: null,
+  };
+
+  campform: any
   inscricoes: campos[] = [];
 
 
@@ -22,21 +28,26 @@ export class CrudComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService
 
+
   ) {
   }
   ngOnInit() {
     this.formularios();
-    this.inserirTabela();
+
   }
 
   formularios() {
     this.formulario = this.formBuilder.group({
-      Ano: ['', [Validators.required, Validators.minLength(4)]],
-      Acordo_AutoInfracao: ['', [Validators.required]],
-      Processo: ['', [Validators.required]],
-      Apartirde: ['', [Validators.required]],
+      Ano: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      Acordo_AutoInfracao: [null, [Validators.required]],
+      Processo: [null, [Validators.required]],
+      Apartirde: [null, [Validators.required]],
+
+
     })
   }
+
+
   inserirTabela() {
     const { Ano, Acordo_AutoInfracao, Processo, Apartirde } = this.formulario.value
     this.campo = {
@@ -46,25 +57,26 @@ export class CrudComponent implements OnInit {
       Apartirde: Apartirde
 
     };
-
     if (this.formulario.valid) {
       this.inscricoes.push(this.campo)
+
+    } else {
+      this.toastr.error('Dados inválidos, verifique os campos caso necessário contacte o administrado do sistema')
     }
 
 
   }
-  
+
+
   onSubmit() {
     for (var i = 0; i < this.inscricoes.length; i++) {
       var item = this.inscricoes[i];
-      this.crudService.postInscricoes(item).subscribe(data => {
-        this.toastr.success('Dados salvos com sucesso')
-
-      })
-
+      this.crudService.postInscricoes(item).subscribe(
+        sucess => this.toastr.success('Dados salvos com sucesso'),
+        error => this.toastr.error("Error ao inserir dados, tente mais tarde ou contacte o administrador do sistema")
+      )
     }
     this.inscricoes = [];
-
   }
 
   remover(item: any) {
@@ -75,4 +87,5 @@ export class CrudComponent implements OnInit {
       }
     }
   }
+
 }

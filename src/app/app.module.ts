@@ -10,14 +10,25 @@ import { ToastrModule } from 'ngx-toastr';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { CrudComponent } from './CrudComponent/crud/crud.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CrudComponent,
+    CrudComponent
+    
     
   ],
   imports: [
@@ -28,7 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
     ReactiveFormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxMaskModule.forRoot(maskConfig),
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
