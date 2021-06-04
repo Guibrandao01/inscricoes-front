@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+#Projeto
+
+Esse projeto foi desenvolvido por mim com ajuda da Kamylla Lacerda (https://github.com/KamyllaLacerda) com o intuito de automatizar o processo de divida-ativa da Secretaria Municipal de Fazenda de Contagem.
